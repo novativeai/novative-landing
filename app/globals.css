@@ -1,0 +1,395 @@
+@import "tailwindcss";
+
+/* ==========================================
+   NOVATIVE DESIGN SYSTEM
+   Nike-tech meets pixel-abstract-code
+   Light theme with monospace typography
+   ========================================== */
+
+/* Custom Fonts */
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/fonts/JetBrainsMono-Variable.woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================
+   DESIGN TOKENS
+   ========================================== */
+:root {
+  /* Background Colors */
+  --background: #fafafa;
+  --background-secondary: #f5f5f5;
+  --background-tertiary: #ebebeb;
+  --card: #ffffff;
+
+  /* Text Colors */
+  --foreground: #0a0a0a;
+  --foreground-secondary: #525252;
+  --foreground-muted: #737373;
+
+  /* Brand Colors */
+  --primary: #0a0a0a;
+  --primary-foreground: #fafafa;
+  --accent: #3b82f6;
+  --accent-foreground: #ffffff;
+
+  /* UI Colors */
+  --border: #e5e5e5;
+  --border-strong: #d4d4d4;
+  --input: #ffffff;
+  --ring: #0a0a0a;
+
+  /* Semantic Colors */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --destructive: #ef4444;
+
+  /* Decorative */
+  --dot: #0a0a0a;
+  --line: #d4d4d4;
+
+  /* Spacing */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-24: 96px;
+
+  /* Border Radius (Sharp/Minimal) */
+  --radius: 0px;
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+
+  /* Typography */
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Tailwind Theme Configuration */
+@theme inline {
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-card: var(--card);
+
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+}
+
+/* ==========================================
+   BASE STYLES
+   ========================================== */
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: var(--background);
+  }
+
+  body {
+    font-family: var(--font-mono);
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+}
+
+/* ==========================================
+   COMPONENT STYLES
+   ========================================== */
+@layer components {
+  /* Decorative Dot */
+  .dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: var(--dot);
+  }
+
+  .dot-sm {
+    width: 4px;
+    height: 4px;
+  }
+
+  .dot-lg {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Decorative Line */
+  .line-h {
+    width: 100%;
+    height: 1px;
+    background-color: var(--line);
+  }
+
+  .line-v {
+    width: 1px;
+    height: 100%;
+    background-color: var(--line);
+  }
+
+  /* Page Section */
+  .section {
+    padding: var(--spacing-16) var(--spacing-6);
+  }
+
+  @media (min-width: 768px) {
+    .section {
+      padding: var(--spacing-24) var(--spacing-8);
+    }
+  }
+
+  /* Container */
+  .container-custom {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-6);
+    padding-right: var(--spacing-6);
+  }
+
+  @media (min-width: 768px) {
+    .container-custom {
+      padding-left: var(--spacing-8);
+      padding-right: var(--spacing-8);
+    }
+  }
+
+  /* Card with border */
+  .card-bordered {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    padding: var(--spacing-6);
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    border: 1px solid var(--border);
+    background-color: var(--background-secondary);
+  }
+
+  /* Tag Keywords */
+  .tag-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-4);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: var(--foreground-secondary);
+  }
+
+  .tag-row .separator,
+  .tag-separator {
+    color: var(--foreground-muted);
+  }
+
+  /* Page Number */
+  .page-number {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--foreground-secondary);
+  }
+
+  /* Grid Pattern Background */
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, var(--border) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Dot Pattern Background */
+  .dot-pattern {
+    background-image: radial-gradient(var(--border-strong) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+@layer utilities {
+  /* Text Styles */
+  .text-display {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 500;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  .text-headline {
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-weight: 500;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  .text-title {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .text-body {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    line-height: 1.6;
+  }
+
+  .text-body-sm {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .text-body-lg {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    line-height: 1.6;
+  }
+
+  .text-caption {
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+    color: var(--foreground-secondary);
+  }
+
+  .text-mono-sm {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Underline Animation */
+  .underline-animated {
+    position: relative;
+    text-decoration: none;
+  }
+
+  .underline-animated::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .underline-animated:hover::after {
+    width: 100%;
+  }
+
+  /* Fade In Animation */
+  .fade-in {
+    animation: fadeIn 0.6s ease forwards;
+  }
+
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stagger Animation Delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+
+  /* Aspect Ratios */
+  .aspect-card { aspect-ratio: 4/3; }
+  .aspect-hero { aspect-ratio: 16/9; }
+
+  /* Custom Focus */
+  .focus-ring {
+    outline: none;
+  }
+
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+/* ==========================================
+   ANIMATIONS (Framer Motion Compatible)
+   ========================================== */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  /* Smooth Scroll Snap */
+  .snap-y {
+    scroll-snap-type: y mandatory;
+  }
+
+  .snap-start {
+    scroll-snap-align: start;
+  }
+}
