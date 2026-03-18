@@ -30,8 +30,11 @@ export const metadata: Metadata = {
     title: 'Novative | AI Product Studio',
     description:
       'We build AI-powered products that generate revenue. 22+ products shipped to production.',
+    url: 'https://novative.dev',
+    siteName: 'Novative',
     type: 'website',
   },
+  metadataBase: new URL('https://novative.dev'),
 };
 
 export default function RootLayout({

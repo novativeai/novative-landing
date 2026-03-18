@@ -361,7 +361,7 @@ export function ProjectFormSection() {
                           value={formData.email}
                           onChange={(e) => setFormData((prev) => ({ ...prev, email: e.target.value }))}
                           className="w-full p-3 border border-[var(--border)] bg-transparent text-body focus:outline-none focus:border-[var(--foreground)]"
-                          placeholder="votre@email.com"
+                          placeholder="you@company.com"
                         />
                       </div>
                     </div>

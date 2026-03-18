@@ -23,9 +23,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { name: 'LinkedIn', href: 'https://linkedin.com/company/novative' },
-  { name: 'Twitter', href: 'https://twitter.com/novative_io' },
-  { name: 'GitHub', href: 'https://github.com/novative' },
+  { name: 'LinkedIn', href: 'https://linkedin.com/company/novativeai' },
+  { name: 'Twitter', href: 'https://x.com/novativeai' },
+  { name: 'GitHub', href: 'https://github.com/novativeai' },
 ];
 
 export function Footer() {
