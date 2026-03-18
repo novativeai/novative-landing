@@ -46,7 +46,9 @@ export function Navigation() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-4">
-            <Button size="sm">Start a Project</Button>
+            <a href="#estimate">
+              <Button size="sm">Start a Project</Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -81,7 +83,9 @@ export function Navigation() {
                 </a>
               ))}
               <div className="pt-4 border-t border-[var(--border)]">
-                <Button className="w-full">Start a Project</Button>
+                <a href="#estimate">
+                  <Button className="w-full">Start a Project</Button>
+                </a>
               </div>
             </div>
           </motion.div>

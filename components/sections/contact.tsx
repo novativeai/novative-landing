@@ -17,14 +17,14 @@ const contactMethods = [
     title: 'Discovery Call',
     description: '15 min, free, no pitch',
     action: 'Book a slot',
-    href: '#book',
+    href: 'mailto:contact@novative.dev?subject=Discovery%20Call%20Request&body=Hi%20Novative%2C%0A%0AI%27d%20like%20to%20book%20a%20discovery%20call.%0A%0AProject%20idea%3A%20',
   },
   {
     icon: MessageSquare,
     title: 'Chat',
     description: 'Available now',
     action: 'Start a conversation',
-    href: '#chat',
+    href: 'mailto:contact@novative.dev?subject=New%20Inquiry&body=Hi%20Novative%2C%0A%0A',
   },
 ];
 
@@ -68,10 +68,12 @@ export function ContactSection() {
               Tell us what you&apos;re building. We&apos;ll tell you exactly
               what it takes — timeline, cost, and how AI can make it better.
             </p>
-            <Button size="xl" className="group">
-              Start Your Project
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <a href="#estimate">
+              <Button size="xl" className="group">
+                Start Your Project
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
           </motion.div>
 
           {/* Right: Contact Methods */}

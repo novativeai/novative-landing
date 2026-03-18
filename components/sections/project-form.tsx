@@ -116,6 +116,37 @@ export function ProjectFormSection() {
     }));
   };
 
+  const handleSubmit = () => {
+    const projectLabel = projectTypes.find((p) => p.id === formData.projectType)?.label ?? '';
+    const complexityLabel = complexityOptions.find((c) => c.id === formData.complexity)?.label ?? '';
+    const timelineLabel = timelineOptions.find((t) => t.id === formData.timeline)?.label ?? '';
+    const selectedFeatureLabels = featureOptions
+      .filter((f) => formData.features.includes(f.id))
+      .map((f) => f.label)
+      .join(', ');
+
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.company ? `Company: ${formData.company}` : '',
+      '',
+      `Project Type: ${projectLabel}`,
+      `Complexity: ${complexityLabel}`,
+      `Timeline: ${timelineLabel}`,
+      selectedFeatureLabels ? `Features: ${selectedFeatureLabels}` : '',
+      '',
+      `Estimated Budget: $${estimate.minPrice.toLocaleString()} – $${estimate.maxPrice.toLocaleString()}`,
+      `Estimated Timeline: ${estimate.minDays} – ${estimate.maxDays} days`,
+      '',
+      formData.description ? `Project Description:\n${formData.description}` : '',
+    ]
+      .filter(Boolean)
+      .join('\n');
+
+    const subject = `Project Estimate: ${projectLabel} — ${formData.name}`;
+    window.location.href = `mailto:contact@novative.dev?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  };
+
   const canProceed = () => {
     if (step === 1) return formData.projectType !== null;
     if (step === 2) return formData.complexity !== null && formData.timeline !== null;
@@ -408,7 +439,7 @@ export function ProjectFormSection() {
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 ) : (
-                  <Button disabled={!canProceed()} className="group">
+                  <Button disabled={!canProceed()} className="group" onClick={handleSubmit}>
                     Submit Request
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Button>
