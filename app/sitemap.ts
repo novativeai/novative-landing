@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { blogPosts, getAllBlogSlugs } from '@/lib/blog';
 import { caseStudies, getAllSlugs } from '@/lib/case-studies';
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -15,6 +16,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       images: study?.image
         ? [`${baseUrl}${study.image}`]
         : undefined,
+    };
+  });
+
+  const blogUrls: MetadataRoute.Sitemap = getAllBlogSlugs().map((slug) => {
+    const post = blogPosts.find((p) => p.slug === slug);
+    return {
+      url: `${baseUrl}/blog/${slug}`,
+      lastModified: post?.updatedAt ? new Date(post.updatedAt) : new Date(post?.publishedAt ?? now),
+      changeFrequency: 'monthly',
+      priority: 0.7,
     };
   });
 
@@ -38,6 +49,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     // Individual case studies
     ...caseStudyUrls,
+    // Blog listing page
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: now,
+      changeFrequency: 'weekly',
+      priority: 0.8,
+    },
+    // Individual blog posts
+    ...blogUrls,
     // Legal pages — low priority, rarely change
     {
       url: `${baseUrl}/legal`,
