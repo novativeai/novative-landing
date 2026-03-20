@@ -192,18 +192,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <section className="pb-16 md:pb-24">
           <div className="container-custom max-w-3xl">
             <div
-              className="prose prose-invert prose-lg max-w-none
-                prose-headings:font-semibold prose-headings:tracking-tight
-                prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-12 prose-h2:mb-4
-                prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-8 prose-h3:mb-3
-                prose-p:text-[var(--foreground-secondary)] prose-p:leading-relaxed
-                prose-a:text-[var(--foreground)] prose-a:underline prose-a:underline-offset-4 prose-a:decoration-[var(--foreground-muted)] hover:prose-a:decoration-[var(--foreground)]
-                prose-strong:text-[var(--foreground)]
-                prose-code:text-[var(--foreground)] prose-code:bg-[var(--background-secondary)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-                prose-pre:bg-[var(--background-secondary)] prose-pre:border prose-pre:border-[var(--border)]
-                prose-blockquote:border-l-[var(--foreground-muted)] prose-blockquote:text-[var(--foreground-secondary)]
-                prose-li:text-[var(--foreground-secondary)]
-                prose-img:rounded prose-img:border prose-img:border-[var(--border)]"
+              className="blog-content"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           </div>
