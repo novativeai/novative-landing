@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <main>
         {/* Article Header */}
         <section className="pt-28 md:pt-36 pb-12 md:pb-16">
-          <div className="container-custom max-w-3xl">
+          <div className="container-custom max-w-3xl lg:max-w-4xl xl:max-w-5xl">
             <div className="flex items-center gap-3 mb-6">
               <span className="dot" />
               <span className="text-mono-sm uppercase tracking-wider text-[var(--foreground-muted)]">
@@ -135,7 +135,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               </span>
             </div>
 
-            <h1 className="text-display text-3xl md:text-4xl lg:text-5xl mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-semibold tracking-tight leading-[1.15] mb-6">
               {post.title}
             </h1>
 
@@ -190,7 +190,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* Article Content */}
         <section className="pb-16 md:pb-24">
-          <div className="container-custom max-w-3xl">
+          <div className="container-custom max-w-3xl lg:max-w-4xl xl:max-w-5xl">
             <div
               className="blog-content"
               dangerouslySetInnerHTML={{ __html: post.content }}
@@ -201,7 +201,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Related Case Studies */}
         {relatedStudies.length > 0 && (
           <section className="bg-[var(--background-secondary)] py-16 md:py-24">
-            <div className="container-custom max-w-3xl">
+            <div className="container-custom max-w-3xl lg:max-w-4xl xl:max-w-5xl">
               <div className="flex items-center gap-3 mb-8">
                 <span className="dot" />
                 <span className="text-mono-sm uppercase tracking-wider text-[var(--foreground-muted)]">
@@ -240,7 +240,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         {/* Post Navigation */}
         {(prevPost || nextPost) && (
           <section className="border-t border-[var(--border)]">
-            <div className="container-custom max-w-3xl py-12">
+            <div className="container-custom max-w-3xl lg:max-w-4xl xl:max-w-5xl py-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {prevPost ? (
                   <Link
