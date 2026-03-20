@@ -92,6 +92,21 @@ export default async function BlogPostPage({ params }: PageProps) {
     isPartOf: { '@id': 'https://novative.dev/#website' },
   };
 
+  const faqJsonLd = post.faqItems?.length
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }
+    : null;
+
   return (
     <>
       <script
@@ -100,6 +115,14 @@ export default async function BlogPostPage({ params }: PageProps) {
           __html: JSON.stringify(jsonLd).replace(/</g, '\u003c'),
         }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd).replace(/</g, '\u003c'),
+          }}
+        />
+      )}
 
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-[var(--background)]/90 backdrop-blur-sm border-b border-[var(--border)]">
