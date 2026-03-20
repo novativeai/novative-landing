@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     description:
       'We build AI-powered SaaS platforms, web apps, chatbots, and automation systems that generate revenue. 22+ products shipped. MVP in 2-4 weeks. Get a free estimate.',
     url: 'https://novative.dev',
-    siteName: 'Novative',
+    siteName: 'Novative Software Studio',
     locale: 'en_US',
     type: 'website',
   },
@@ -93,7 +93,7 @@ const jsonLd = {
     {
       '@type': 'Organization',
       '@id': 'https://novative.dev/#organization',
-      name: 'Novative',
+      name: 'Novative Software Studio',
       url: 'https://novative.dev',
       description:
         'AI product studio that builds SaaS platforms, web apps, mobile apps, chatbots, and business automation. 22+ products shipped to production.',
@@ -130,7 +130,8 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': 'https://novative.dev/#website',
       url: 'https://novative.dev',
-      name: 'Novative',
+      name: 'Novative Software Studio',
+      alternateName: 'Novative',
       publisher: { '@id': 'https://novative.dev/#organization' },
     },
     {
