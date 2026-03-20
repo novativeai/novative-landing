@@ -1,13 +1,32 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Clapperboard, Magnet, Radar, Landmark } from 'lucide-react';
+import { ArrowRight, Bot, Clapperboard, Landmark, Magnet, Palette, Radar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const projects = [
+  {
+    icon: Bot,
+    name: 'NovaMachine',
+    slug: 'novamachine',
+    category: 'AI Video Generation SaaS',
+    metric: '3.2M',
+    metricLabel: 'creations',
+    description: 'Node-based AI video and image generation platform with 7 node types, multi-model support, and a credit-based billing system.',
+    image: '/portfolio/PF-NovaMachine.png',
+  },
+  {
+    icon: Palette,
+    name: 'NovaStudio',
+    slug: 'novastudio',
+    category: 'AI Video Editor',
+    metric: '30',
+    metricLabel: 'fps timeline',
+    description: 'Professional web-based video editor with AI generation, frame-accurate multi-track timeline, and backend rendering via FFmpeg.',
+    image: '/portfolio/PF-NOVASTUDIO.png',
+  },
   {
     icon: Clapperboard,
     name: 'Reelzila',
@@ -16,10 +35,7 @@ const projects = [
     metric: '40-70%',
     metricLabel: 'profit margin',
     description: 'AI video platform with 6 models and a creator marketplace.',
-    screenshots: [
-      { src: '/screenshots/reelzila-home.png', label: 'Homepage' },
-      { src: '/screenshots/reelzila-explore.png', label: 'AI Models' },
-    ],
+    image: '/portfolio/PF-Reelzila.png',
   },
   {
     icon: Magnet,
@@ -29,10 +45,7 @@ const projects = [
     metric: '9+',
     metricLabel: 'lead sources',
     description: 'Autonomous lead generation that discovers and contacts prospects while you sleep.',
-    screenshots: [
-      { src: '/screenshots/magnet-pipeline.png', label: 'Pipeline' },
-      { src: '/screenshots/magnet-dashboard.png', label: 'Dashboard' },
-    ],
+    image: '/portfolio/PF-Magnet.png',
   },
   {
     icon: Radar,
@@ -42,9 +55,7 @@ const projects = [
     metric: '10+',
     metricLabel: 'signal sources',
     description: 'Buying signal radar that detects companies ready to buy before competitors do.',
-    screenshots: [
-      { src: '/screenshots/sonar-companies.png', label: 'Companies' },
-    ],
+    image: '/portfolio/PF-Sonar.png',
   },
   {
     icon: Landmark,
@@ -54,10 +65,7 @@ const projects = [
     metric: '5',
     metricLabel: 'verification stages',
     description: 'AI-powered authenticity verification for cultural preservation.',
-    screenshots: [
-      { src: '/screenshots/heritage-home.png', label: 'Homepage' },
-      { src: '/screenshots/heritage-verify.png', label: 'Verify' },
-    ],
+    image: '/portfolio/PF-Heritage.png',
   },
 ];
 
@@ -79,78 +87,6 @@ const itemVariants = {
     transition: { duration: 0.5 },
   },
 };
-
-interface ScreenshotGalleryProps {
-  screenshots: { src: string; label: string }[];
-  name: string;
-  icon: React.ElementType;
-}
-
-function ScreenshotGallery({ screenshots, name, icon: Icon }: ScreenshotGalleryProps) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  if (screenshots.length === 0) {
-    return (
-      <div className="relative w-full aspect-[16/9] mb-4 overflow-hidden bg-[var(--background-tertiary)] border border-[var(--border)] flex items-center justify-center">
-        <Icon className="w-12 h-12 text-[var(--foreground-muted)]" strokeWidth={1} />
-      </div>
-    );
-  }
-
-  return (
-    <div className="mb-4">
-      {/* Main Screenshot */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden bg-[var(--background-tertiary)] border border-[var(--border)]">
-        {screenshots.map((shot, i) => (
-          <Image
-            key={shot.src}
-            src={shot.src}
-            alt={`${name} — ${shot.label}`}
-            fill
-            className={`object-cover object-top transition-opacity duration-300 ${
-              i === activeIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            sizes="(max-width: 768px) 100vw, 50vw"
-            priority={i === 0}
-          />
-        ))}
-      </div>
-
-      {/* Thumbnails */}
-      {screenshots.length > 1 && (
-        <div className="flex gap-2 mt-2">
-          {screenshots.map((shot, i) => (
-            <button
-              key={shot.src}
-              onMouseEnter={() => setActiveIndex(i)}
-              onClick={(e) => { e.preventDefault(); setActiveIndex(i); }}
-              className={`relative flex-1 aspect-[16/9] overflow-hidden border transition-all duration-200 ${
-                i === activeIndex
-                  ? 'border-[var(--foreground)] opacity-100'
-                  : 'border-[var(--border)] opacity-50 hover:opacity-80'
-              }`}
-            >
-              <Image
-                src={shot.src}
-                alt={shot.label}
-                fill
-                className="object-cover object-top"
-                sizes="150px"
-              />
-              <div className={`absolute bottom-0 left-0 right-0 px-1.5 py-0.5 text-[9px] font-medium uppercase tracking-wider text-center transition-colors ${
-                i === activeIndex
-                  ? 'bg-[var(--foreground)] text-[var(--background)]'
-                  : 'bg-[var(--background)]/80 text-[var(--foreground-muted)]'
-              }`}>
-                {shot.label}
-              </div>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
 
 export function WorkPreviewSection() {
   return (
@@ -192,16 +128,20 @@ export function WorkPreviewSection() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
         >
           {projects.map((project) => (
-            <Link key={project.name} href={`/work#${project.slug}`}>
+            <Link key={project.name} href={`/work/${project.slug}`}>
               <motion.div
                 variants={itemVariants}
                 className="card-bordered group hover:border-[var(--foreground)] transition-all cursor-pointer overflow-hidden"
               >
-                <ScreenshotGallery
-                  screenshots={project.screenshots}
-                  name={project.name}
-                  icon={project.icon}
-                />
+                <div className="relative w-full aspect-[16/9] mb-4 overflow-hidden bg-[var(--background-tertiary)] border border-[var(--border)]">
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} — ${project.category} built by Novative`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
 
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">

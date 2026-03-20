@@ -2,6 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Bot, Rocket, Smartphone, Globe, Zap } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 const services = [
   {
@@ -10,6 +12,7 @@ const services = [
     description:
       'Chatbots that answer your customers 24/7. Voice agents that qualify leads. Content generators that save hours of work. We build AI that pays for itself.',
     tags: ['Chatbot', 'Voice AI', 'Automation'],
+    caseStudy: { slug: 'novamachine', name: 'NovaMachine' },
   },
   {
     icon: Globe,
@@ -17,6 +20,7 @@ const services = [
     description:
       'Complete web applications with user accounts, subscription billing, admin dashboards, and analytics. Launch-ready in 6-8 weeks.',
     tags: ['Subscriptions', 'Dashboard', 'Analytics'],
+    caseStudy: { slug: 'reelzila', name: 'Reelzila' },
   },
   {
     icon: Smartphone,
@@ -24,6 +28,7 @@ const services = [
     description:
       'iOS and Android from one codebase. Offline-capable, fast, and native-feeling. From restaurant POS systems to fintech apps.',
     tags: ['iOS', 'Android', 'Cross-Platform'],
+    caseStudy: null,
   },
   {
     icon: Rocket,
@@ -31,6 +36,7 @@ const services = [
     description:
       'Validate your idea with a working product in 2-4 weeks. Not a wireframe — a real app with real users and real data.',
     tags: ['Fast', '2-4 Weeks', 'Launch-Ready'],
+    caseStudy: { slug: 'reelzila', name: 'Reelzila — 8 weeks' },
   },
   {
     icon: Zap,
@@ -38,6 +44,7 @@ const services = [
     description:
       'Connect your tools. Automate your workflows. Lead generation, email sequences, data processing — systems that run while you sleep.',
     tags: ['Workflows', 'Integration', 'Scale'],
+    caseStudy: { slug: 'magnet', name: 'Magnet' },
   },
 ];
 
@@ -126,6 +133,17 @@ export function ServicesSection() {
                   </span>
                 ))}
               </div>
+
+              {/* Case Study Link */}
+              {service.caseStudy && (
+                <Link
+                  href={`/work/${service.caseStudy.slug}`}
+                  className="mt-4 flex items-center gap-2 text-mono-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
+                >
+                  <span>See {service.caseStudy.name}</span>
+                  <ArrowRight className="w-3 h-3" />
+                </Link>
+              )}
             </motion.div>
           ))}
         </motion.div>

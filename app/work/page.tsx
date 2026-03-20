@@ -1,11 +1,14 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowLeft, ExternalLink, Clapperboard, Magnet, Radar, Landmark } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Bot, Clapperboard, ExternalLink, Landmark, Magnet, Palette, Radar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+
+// Note: metadata must be in a server component or a separate metadata export.
+// Since this is 'use client', we handle metadata via the parent layout or a
+// generateMetadata in a separate file. JSON-LD is embedded inline below.
 
 interface CaseStudy {
   id: string;
@@ -15,7 +18,7 @@ interface CaseStudy {
   category: string;
   icon: React.ElementType;
   url?: string;
-  screenshots: { src: string; label: string }[];
+  image: string;
   challenge: string;
   solution: string;
   results: { label: string; value: string }[];
@@ -24,81 +27,74 @@ interface CaseStudy {
   color: string;
 }
 
-function CaseStudyGallery({ screenshots, name }: { screenshots: { src: string; label: string }[]; name: string }) {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  if (screenshots.length === 0) return null;
-
-  return (
-    <div className="mb-12 md:mb-16">
-      {/* Main Screenshot */}
-      <div className="relative w-full aspect-[16/9] overflow-hidden border border-[var(--border)] bg-[var(--background-tertiary)]">
-        {screenshots.map((shot, i) => (
-          <Image
-            key={shot.src}
-            src={shot.src}
-            alt={`${name} — ${shot.label}`}
-            fill
-            className={`object-cover object-top transition-opacity duration-400 ${
-              i === activeIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            sizes="(max-width: 768px) 100vw, 1200px"
-            priority={i === 0}
-          />
-        ))}
-      </div>
-
-      {/* Thumbnails */}
-      {screenshots.length > 1 && (
-        <div className="flex gap-3 mt-3">
-          {screenshots.map((shot, i) => (
-            <button
-              key={shot.src}
-              onMouseEnter={() => setActiveIndex(i)}
-              onClick={() => setActiveIndex(i)}
-              className={`relative aspect-[16/9] overflow-hidden border transition-all duration-200 ${
-                screenshots.length === 2 ? 'w-1/4' : 'w-1/5'
-              } ${
-                i === activeIndex
-                  ? 'border-[var(--foreground)] opacity-100 ring-1 ring-[var(--foreground)]'
-                  : 'border-[var(--border)] opacity-40 hover:opacity-70'
-              }`}
-            >
-              <Image
-                src={shot.src}
-                alt={shot.label}
-                fill
-                className="object-cover object-top"
-                sizes="200px"
-              />
-              <div className={`absolute bottom-0 left-0 right-0 px-2 py-1 text-[10px] font-medium uppercase tracking-wider text-center transition-colors ${
-                i === activeIndex
-                  ? 'bg-[var(--foreground)] text-[var(--background)]'
-                  : 'bg-[var(--background)]/90 text-[var(--foreground-muted)]'
-              }`}>
-                {shot.label}
-              </div>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
-}
-
 const caseStudies: CaseStudy[] = [
   {
-    id: 'reelzila',
+    id: 'novamachine',
     number: '01',
+    name: 'NovaMachine',
+    tagline: 'Node-based AI video and image generation platform with multi-model support and a credit-based billing system.',
+    category: 'AI Video Generation SaaS',
+    icon: Bot,
+    image: '/portfolio/PF-NovaMachine.png',
+    challenge:
+      'Content creators needed access to AI video generation without technical barriers. Existing tools were limited to single models, offered no visual workflow, and had no way to chain outputs or control cinematic parameters like camera angles and lighting.',
+    solution:
+      'We built a node-based canvas editor with 7 node types (Prompt, Image, Video, Element, Camera, Lighting, Output) where users visually connect inputs to generate AI videos and images. Supports multiple AI models via fal.ai, with a tag system (@Image1, @Video1) for multi-prompt workflows, real-time cost estimation, and Stripe-powered credit billing.',
+    results: [
+      { label: 'Total Creations', value: '3.2M' },
+      { label: 'Node Types', value: '7' },
+      { label: 'Countries', value: '47' },
+      { label: 'Uptime', value: '99.9%' },
+    ],
+    features: [
+      '7-node canvas editor: Prompt, Image, Video, Element, Camera, Lighting, Output',
+      'Multi-model AI generation via fal.ai (Kling, Nano Banana Pro)',
+      'Per-prompt tag system with @-mention autocomplete and visual highlighting',
+      'Camera node with 14 angles, 9 lens lengths, 11 color grades',
+      'Credit-based pricing with 3 Stripe tiers (Free, Pro $29, Enterprise $99)',
+      'Canvas persistence, drag-and-drop, fullscreen viewer with keyboard shortcuts',
+    ],
+    techStack: ['Next.js 15', 'React 19', 'React Flow', 'Firebase', 'Stripe', 'fal.ai'],
+    color: 'var(--foreground)',
+  },
+  {
+    id: 'novastudio',
+    number: '02',
+    name: 'NovaStudio',
+    tagline: 'Professional web-based video editor with integrated AI generation, frame-accurate timeline, and backend rendering.',
+    category: 'AI Video Editor',
+    icon: Palette,
+    image: '/portfolio/PF-NOVASTUDIO.png',
+    challenge:
+      'Video creators needed a browser-based editor with desktop-class precision. Existing web editors lacked frame-accurate timelines, multi-track compositing, and had no integrated AI generation — forcing creators to switch between multiple tools.',
+    solution:
+      'We built a professional video editor with a frame-based timeline (no floating-point precision errors), multi-track compositing with color-coded tracks, and integrated Kling 2.5 AI video generation. Backend rendering via FastAPI + MoviePy + FFmpeg handles heavy processing, while the frontend delivers industry-standard J/K/L shuttle controls and non-destructive editing.',
+    results: [
+      { label: 'Timeline FPS', value: '30' },
+      { label: 'Undo History', value: '1000' },
+      { label: 'Auto-Save', value: '30s' },
+      { label: 'Quality', value: '92%' },
+    ],
+    features: [
+      'Frame-accurate timeline with HH:MM:SS:FF timecode and 29.97fps drop-frame support',
+      'Multi-track compositing with color-coded tracks (green/yellow/purple)',
+      'Integrated Kling 2.5 AI video generation with direct timeline insertion',
+      'Industry-standard J/K/L shuttle controls matching Premiere Pro workflow',
+      'EDL-based export with backend FFmpeg rendering (H.264/H.265)',
+      'Auto-save every 30 seconds with .novastudio project format and crash recovery',
+    ],
+    techStack: ['Next.js 15', 'React 19', 'FastAPI', 'MoviePy', 'FFmpeg', 'fal.ai'],
+    color: 'var(--foreground)',
+  },
+  {
+    id: 'reelzila',
+    number: '03',
     name: 'Reelzila',
     tagline: 'AI video platform with a creator marketplace that generates 40-70% profit margins.',
     category: 'AI SaaS Platform',
     icon: Clapperboard,
     url: 'reelzila.studio',
-    screenshots: [
-      { src: '/screenshots/reelzila-home.png', label: 'Homepage' },
-      { src: '/screenshots/reelzila-explore.png', label: 'AI Models' },
-    ],
+    image: '/portfolio/PF-Reelzila.png',
     challenge:
       'Content creators needed access to cutting-edge AI video generation without paying enterprise prices. Existing tools were either too expensive, limited to one model, or had no way for creators to monetize their generations.',
     solution:
@@ -122,17 +118,14 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: 'magnet',
-    number: '02',
+    number: '04',
     name: 'Magnet',
     tagline: 'Autonomous lead generation that discovers, qualifies, and contacts prospects while you sleep.',
     category: 'AI Sales Intelligence',
     icon: Magnet,
-    screenshots: [
-      { src: '/screenshots/magnet-pipeline.png', label: 'Pipeline' },
-      { src: '/screenshots/magnet-dashboard.png', label: 'Dashboard' },
-    ],
+    image: '/portfolio/PF-Magnet.png',
     challenge:
-      'Sales teams waste 60-70% of their time on manual prospecting — browsing job boards, scanning forums, copy-pasting emails. By the time they reach a lead, competitors have already made contact. The process doesn\u0027t scale.',
+      'Sales teams waste 60-70% of their time on manual prospecting — browsing job boards, scanning forums, copy-pasting emails. By the time they reach a lead, competitors have already made contact. The process doesn\'t scale.',
     solution:
       'We built an autonomous lead generation engine that scrapes 9+ sources (Upwork, Reddit, Hacker News, Indeed, RemoteOK, and more), classifies signals with a multi-layer confidence scorer, and generates personalized outreach sequences via Claude AI — all running hands-free on a daily schedule.',
     results: [
@@ -154,14 +147,12 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: 'sonar',
-    number: '03',
+    number: '05',
     name: 'Sonar',
     tagline: 'B2B buying signal radar. Detects companies ready to buy before your competitors do.',
     category: 'B2B Intelligence Platform',
     icon: Radar,
-    screenshots: [
-      { src: '/screenshots/sonar-companies.png', label: 'Companies' },
-    ],
+    image: '/portfolio/PF-Sonar.png',
     challenge:
       'B2B sales teams rely on LinkedIn and outdated databases to find leads. They miss buying signals — funding rounds, leadership changes, tech migrations, expansion announcements — that indicate a company is actively ready to purchase. By the time they find out, the deal is already in motion.',
     solution:
@@ -185,15 +176,12 @@ const caseStudies: CaseStudy[] = [
   },
   {
     id: 'heritage',
-    number: '04',
+    number: '06',
     name: 'Heritage Vault',
     tagline: 'AI-powered authenticity verification for cultural preservation. Trusted by institutions.',
     category: 'Digital Archive Platform',
     icon: Landmark,
-    screenshots: [
-      { src: '/screenshots/heritage-home.png', label: 'Homepage' },
-      { src: '/screenshots/heritage-verify.png', label: 'AI Verify' },
-    ],
+    image: '/portfolio/PF-Heritage.png',
     challenge:
       'Cultural institutions needed a trusted repository to preserve historical media while combating deepfakes and AI-generated forgeries. Existing platforms had no way to cryptographically verify that content was authentic and untampered.',
     solution:
@@ -390,8 +378,16 @@ export default function WorkPage() {
                   ))}
                 </div>
 
-                {/* Screenshot Gallery */}
-                <CaseStudyGallery screenshots={study.screenshots} name={study.name} />
+                {/* Screenshot */}
+                <div className="relative w-full aspect-[16/9] overflow-hidden border border-[var(--border)] bg-[var(--background-tertiary)] mb-12 md:mb-16">
+                  <Image
+                    src={study.image}
+                    alt={`${study.name} — ${study.category} case study by Novative`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 1200px"
+                  />
+                </div>
 
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">

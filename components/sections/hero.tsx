@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { PointGeometry } from '@/components/point-geometry';
 import Link from 'next/link';
 
-const keywords = ['ai products', 'saas platforms', 'business automation', 'mobile apps'];
+const keywords = ['ai products', 'saas development', 'chatbot & ai agents', 'web & mobile apps'];
 
 export function HeroSection() {
   return (
@@ -51,9 +51,9 @@ export function HeroSection() {
               className="mb-12 md:mb-16"
             >
               <p className="text-body-lg text-[var(--foreground-secondary)] max-w-md">
-                We build AI-powered products that generate revenue.
-                Not mockups. Not MVPs that break. Production systems
-                that work from day one.
+                We build AI-powered SaaS platforms, web apps, and chatbots
+                that generate revenue. Not mockups. Production systems
+                shipped in weeks, not months.
               </p>
             </motion.div>
 
