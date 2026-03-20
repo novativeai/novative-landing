@@ -6,15 +6,6 @@
    Light theme with monospace typography
    ========================================== */
 
-/* Custom Fonts */
-@font-face {
-  font-family: "JetBrains Mono";
-  src: url("/fonts/JetBrainsMono-Variable.woff2") format("woff2");
-  font-weight: 100 800;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ==========================================
    DESIGN TOKENS
    ========================================== */
@@ -224,7 +215,7 @@
 
   .tag-row .separator,
   .tag-separator {
-    color: var(--foreground-muted);
+    color: var(--foreground-secondary);
   }
 
   /* Page Number */

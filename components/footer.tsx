@@ -49,7 +49,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/50">
+            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/70">
               Services
             </h4>
             <ul className="space-y-2">
@@ -68,7 +68,7 @@ export function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/50">
+            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/70">
               Company
             </h4>
             <ul className="space-y-2">
@@ -87,7 +87,7 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/50">
+            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/70">
               Legal
             </h4>
             <ul className="space-y-2">
@@ -106,7 +106,7 @@ export function Footer() {
 
           {/* Social */}
           <div>
-            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/50">
+            <h4 className="text-mono-sm uppercase tracking-wider mb-4 text-[var(--background)]/70">
               Social
             </h4>
             <ul className="space-y-2">
@@ -131,12 +131,12 @@ export function Footer() {
 
         {/* Bottom Row */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-mono-sm text-[var(--background)]/50">
+          <p className="text-mono-sm text-[var(--background)]/70">
             &copy; {currentYear} Novative. All rights reserved.
           </p>
 
           {/* Keywords */}
-          <div className="flex items-center gap-2 text-mono-sm text-[var(--background)]/30">
+          <div className="flex items-center gap-2 text-mono-sm text-[var(--background)]/60">
             <span>ai products</span>
             <span>&middot;</span>
             <span>saas platforms</span>
