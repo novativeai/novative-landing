@@ -309,7 +309,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
-                <Link href="/#contact">
+                <Link href="/book">
                   <Button
                     variant="outline"
                     size="lg"

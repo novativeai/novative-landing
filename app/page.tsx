@@ -9,6 +9,9 @@ import { PricingSection } from '@/components/sections/pricing';
 import { ProjectFormSection } from '@/components/sections/project-form';
 import { FaqHomeSection } from '@/components/sections/faq';
 import { ContactSection } from '@/components/sections/contact';
+import { TestimonialsSection } from '@/components/sections/testimonials';
+import { TrustBar } from '@/components/trust-bar';
+import { LeadMagnet } from '@/components/lead-magnet';
 import { Footer } from '@/components/footer';
 
 export default function Home() {
@@ -17,13 +20,16 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
+        <TrustBar />
         <ServicesSection />
         <WorkPreviewSection />
+        <TestimonialsSection />
         <ExpertiseSection />
         <AdvantagesSection />
         <MissionSection />
         <PricingSection />
         <ProjectFormSection />
+        <LeadMagnet className="bg-[var(--background-secondary)]" />
         <FaqHomeSection />
         <ContactSection />
       </main>
