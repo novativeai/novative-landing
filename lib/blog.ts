@@ -18,6 +18,8 @@ export interface BlogPost {
   readingTime: string;
   content: string;
   relatedCaseStudies?: string[];
+  /** Contextual link to the most relevant service/landing page. */
+  relatedService?: { name: string; href: string };
   faqItems?: { question: string; answer: string }[];
 }
 
@@ -40,7 +42,8 @@ export const blogPosts: BlogPost[] = [
     ],
     readingTime: '14 min read',
     content: appDevCostContent,
-    relatedCaseStudies: ['reelzila', 'novamachine', 'magnet', 'heritage'],
+    relatedCaseStudies: ['reelzila', 'novamachine', 'magnet'],
+    relatedService: { name: 'See our app development pricing', href: '/cost/app-development' },
     faqItems: [
       {
         question: 'How much does it cost to build an app in 2026?',
@@ -79,6 +82,7 @@ export const blogPosts: BlogPost[] = [
     readingTime: '12 min read',
     content: customAiContent,
     relatedCaseStudies: ['magnet', 'novamachine', 'reelzila'],
+    relatedService: { name: 'Explore AI chatbot development', href: '/services/ai-chatbot' },
     faqItems: [
       {
         question: 'How much does a custom AI tool cost for a business?',
@@ -116,7 +120,8 @@ export const blogPosts: BlogPost[] = [
     ],
     readingTime: '13 min read',
     content: buildVsBuyContent,
-    relatedCaseStudies: ['sonar', 'magnet', 'heritage'],
+    relatedCaseStudies: ['sonar', 'magnet', 'mnemo'],
+    relatedService: { name: 'Explore SaaS & custom development', href: '/services/saas-development' },
   },
   {
     slug: 'real-time-automation-competitive-advantage',
@@ -139,6 +144,7 @@ export const blogPosts: BlogPost[] = [
     readingTime: '11 min read',
     content: realTimeAutomationContent,
     relatedCaseStudies: ['magnet', 'sonar'],
+    relatedService: { name: 'Explore business automation', href: '/services/business-automation' },
   },
   {
     slug: 'ai-chatbot-for-small-business',
@@ -159,6 +165,7 @@ export const blogPosts: BlogPost[] = [
     readingTime: '13 min read',
     content: chatbotSmallBusinessContent,
     relatedCaseStudies: ['magnet', 'novamachine'],
+    relatedService: { name: 'Explore AI chatbot development', href: '/services/ai-chatbot' },
     faqItems: [
       {
         question: 'How much does an AI chatbot cost for a small business?',
@@ -193,7 +200,8 @@ export const blogPosts: BlogPost[] = [
     ],
     readingTime: '14 min read',
     content: whatIsAnMvpContent,
-    relatedCaseStudies: ['reelzila', 'magnet', 'heritage'],
+    relatedCaseStudies: ['reelzila', 'magnet', 'kubera'],
+    relatedService: { name: 'Explore MVP development', href: '/services/mvp-development' },
     faqItems: [
       {
         question: 'What is an MVP (minimum viable product)?',
@@ -234,6 +242,7 @@ export const blogPosts: BlogPost[] = [
     readingTime: '16 min read',
     content: saasLaunchContent,
     relatedCaseStudies: ['reelzila', 'novamachine', 'magnet'],
+    relatedService: { name: 'Explore SaaS development', href: '/services/saas-development' },
     faqItems: [
       {
         question: 'How do I launch a SaaS product in 2026?',

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { caseStudies, getCaseStudy, getAllSlugs } from '@/lib/case-studies';
+import { breadcrumbJsonLd } from '@/lib/seo';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -78,12 +79,24 @@ export default async function CaseStudyPage({ params }: PageProps) {
     },
   };
 
+  const breadcrumbData = breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Work', path: '/work' },
+    { name: study.name, path: `/work/${slug}` },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
         }}
       />
 

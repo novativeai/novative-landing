@@ -9,6 +9,7 @@ const services = [
   {
     icon: Bot,
     title: 'AI Products',
+    href: '/services/ai-chatbot',
     description:
       'Chatbots that answer your customers 24/7. Voice agents that qualify leads. Content generators that save hours of work. We build AI that pays for itself.',
     tags: ['Chatbot', 'Voice AI', 'Automation'],
@@ -17,6 +18,7 @@ const services = [
   {
     icon: Globe,
     title: 'SaaS Platforms',
+    href: '/services/saas-development',
     description:
       'Complete web applications with user accounts, subscription billing, admin dashboards, and analytics. Launch-ready in 6-8 weeks.',
     tags: ['Subscriptions', 'Dashboard', 'Analytics'],
@@ -25,6 +27,7 @@ const services = [
   {
     icon: Smartphone,
     title: 'Mobile Apps',
+    href: '/#estimate',
     description:
       'iOS and Android from one codebase. Offline-capable, fast, and native-feeling. From restaurant POS systems to fintech apps.',
     tags: ['iOS', 'Android', 'Cross-Platform'],
@@ -33,6 +36,7 @@ const services = [
   {
     icon: Rocket,
     title: 'MVP & Rapid Launch',
+    href: '/services/mvp-development',
     description:
       'Validate your idea with a working product in 2-4 weeks. Not a wireframe — a real app with real users and real data.',
     tags: ['Fast', '2-4 Weeks', 'Launch-Ready'],
@@ -41,6 +45,7 @@ const services = [
   {
     icon: Zap,
     title: 'Business Automation',
+    href: '/services/business-automation',
     description:
       'Connect your tools. Automate your workflows. Lead generation, email sequences, data processing — systems that run while you sleep.',
     tags: ['Workflows', 'Integration', 'Scale'],
@@ -118,7 +123,14 @@ export function ServicesSection() {
               </div>
 
               {/* Title */}
-              <h3 className="text-title mb-3">{service.title}</h3>
+              <h3 className="text-title mb-3">
+                <Link
+                  href={service.href}
+                  className="hover:text-[var(--foreground-secondary)] transition-colors"
+                >
+                  {service.title}
+                </Link>
+              </h3>
 
               {/* Description */}
               <p className="text-body text-[var(--foreground-secondary)] mb-6">
@@ -134,16 +146,25 @@ export function ServicesSection() {
                 ))}
               </div>
 
-              {/* Case Study Link */}
-              {service.caseStudy && (
+              {/* Links */}
+              <div className="mt-4 flex flex-col gap-2">
                 <Link
-                  href={`/work/${service.caseStudy.slug}`}
-                  className="mt-4 flex items-center gap-2 text-mono-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
+                  href={service.href}
+                  className="flex items-center gap-2 text-mono-sm text-[var(--foreground)] hover:text-[var(--foreground-secondary)] transition-colors"
                 >
-                  <span>See {service.caseStudy.name}</span>
-                  <ArrowRight className="w-3 h-3" />
+                  <span>Explore {service.title}</span>
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
-              )}
+                {service.caseStudy && (
+                  <Link
+                    href={`/work/${service.caseStudy.slug}`}
+                    className="flex items-center gap-2 text-mono-sm text-[var(--foreground-muted)] hover:text-[var(--foreground)] transition-colors"
+                  >
+                    <span>See {service.caseStudy.name}</span>
+                    <ArrowRight className="w-3 h-3" />
+                  </Link>
+                )}
+              </div>
             </motion.div>
           ))}
         </motion.div>

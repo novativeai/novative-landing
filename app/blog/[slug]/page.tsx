@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { blogPosts, getAllBlogSlugs, getBlogPost } from '@/lib/blog';
 import { getCaseStudy } from '@/lib/case-studies';
+import { breadcrumbJsonLd } from '@/lib/seo';
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -92,6 +93,12 @@ export default async function BlogPostPage({ params }: PageProps) {
     isPartOf: { '@id': 'https://novative.dev/#website' },
   };
 
+  const breadcrumbData = breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: `/blog/${slug}` },
+  ]);
+
   const faqJsonLd = post.faqItems?.length
     ? {
         '@context': 'https://schema.org',
@@ -113,6 +120,12 @@ export default async function BlogPostPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
         }}
       />
       {faqJsonLd && (
@@ -220,6 +233,28 @@ export default async function BlogPostPage({ params }: PageProps) {
             />
           </div>
         </section>
+
+        {/* Related Service */}
+        {post.relatedService && (
+          <section className="pb-12 md:pb-16">
+            <div className="container-custom max-w-3xl lg:max-w-4xl xl:max-w-5xl">
+              <Link
+                href={post.relatedService.href}
+                className="group flex items-center justify-between gap-4 p-6 border border-[var(--foreground)] bg-[var(--background-secondary)] hover:bg-[var(--background-tertiary)] transition-colors"
+              >
+                <div>
+                  <div className="text-mono-sm uppercase tracking-wider text-[var(--foreground-muted)] mb-1">
+                    Work With Us
+                  </div>
+                  <span className="text-title text-lg md:text-xl">
+                    {post.relatedService.name}
+                  </span>
+                </div>
+                <ArrowRight className="w-5 h-5 flex-shrink-0 text-[var(--foreground)] group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </section>
+        )}
 
         {/* Related Case Studies */}
         {relatedStudies.length > 0 && (

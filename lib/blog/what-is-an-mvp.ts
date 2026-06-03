@@ -95,19 +95,13 @@ export const content = `<p>You&apos;ve got an app idea. Maybe you&apos;ve been s
 
 <h2>What an MVP Actually Looks Like in 2026</h2>
 
-<p>Forget Uber&apos;s origin story. You&apos;re not Travis Kalanick, and the lessons from a company that spent $200,000 on its first version in 2010 are useless to you. Here are three real MVPs we shipped at Novative &mdash; with honest details about what we included, what we cut, and why.</p>
+<p>Forget Uber&apos;s origin story. You&apos;re not Travis Kalanick, and the lessons from a company that spent $200,000 on its first version in 2010 are useless to you. Here are two real MVPs we shipped at Novative &mdash; with honest details about what we included, what we cut, and why.</p>
 
 <h3>Reelzila: AI Video Platform</h3>
 
 <p>Reelzila&apos;s founder came to us with a vision for a comprehensive AI video creation platform &mdash; dozens of tools, a social network for creators, an editing suite, a marketplace. The full vision was a 12-month build. The MVP we shipped in <strong>8 weeks</strong> included 6 AI video generation models, a creator marketplace, and a credit-based billing system.</p>
 
 <p>Why those features and not others? Because the core hypothesis was: &ldquo;Will creators pay credits to generate AI videos, and will the marketplace create a flywheel?&rdquo; We didn&apos;t need a full editing suite to test that. We didn&apos;t need social features. We needed the AI models working reliably, a way to charge for them, and a marketplace to see if creators would share and remix. Everything else was cut until that hypothesis was validated.</p>
-
-<h3>Heritage Vault: Digital Archive Platform</h3>
-
-<p>Heritage Vault is a trilingual digital archive with cryptographic verification &mdash; essentially a platform for preserving and authenticating historical documents and cultural artifacts. The full product required support for three languages, multiple verification methods, advanced search, institutional accounts, and public/private collection management.</p>
-
-<p>The MVP started laser-focused: core document upload, one verification method, and bilingual support (the third language came in phase two). The founder wanted all three languages from day one, but we pushed back. The core question wasn&apos;t &ldquo;do people want a third language?&rdquo; &mdash; it was &ldquo;will institutions trust a digital platform with cryptographic verification for archival purposes?&rdquo; That&apos;s what we tested first. Once validated, expanding to the full trilingual experience with additional verification methods was straightforward iteration.</p>
 
 <h3>Magnet: Lead Generation Tool</h3>
 

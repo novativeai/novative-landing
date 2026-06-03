@@ -1,36 +1,36 @@
 import type { Metadata } from 'next';
+import { breadcrumbJsonLd } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Blog — AI & Custom Software Insights for Business Leaders | Novative',
+  // Bare title — the root layout template appends " | Novative".
+  title: 'AI & App Development Blog for Founders',
   description:
-    'Actionable insights on AI integration, custom software development, and digital transformation for CEOs and business leaders. Learn how to leverage technology to scale your business.',
+    "Practical guides on app development costs, AI integration, and MVP strategy for non-technical founders. From a studio that's shipped 22+ products.",
   keywords: [
-    'AI blog for business',
-    'custom software insights',
-    'digital transformation guide',
-    'CEO technology blog',
-    'AI integration strategy',
-    'SaaS development insights',
-    'business automation blog',
-    'AI product development',
-    'software development best practices',
-    'technology leadership',
+    'app development blog',
+    'MVP guide',
+    'hire a developer',
+    'AI chatbot guide',
+    'app cost breakdown',
+    'non-technical founder',
+    'startup development',
+    'SaaS development guide',
   ],
   alternates: {
     canonical: 'https://novative.dev/blog',
   },
   openGraph: {
-    title: 'Blog — AI & Custom Software Insights | Novative',
+    title: 'AI & App Development Blog for Founders | Novative',
     description:
-      'Actionable insights on AI integration, custom software, and digital transformation for CEOs and business leaders.',
+      "Practical guides on app development costs, AI integration, and MVP strategy for non-technical founders. From a studio that's shipped 22+ products.",
     url: 'https://novative.dev/blog',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog — AI & Custom Software Insights | Novative',
+    title: 'AI & App Development Blog for Founders | Novative',
     description:
-      'Actionable insights on AI, custom software, and digital transformation for business leaders.',
+      'Practical guides on app development costs, AI integration, and MVP strategy for non-technical founders.',
   },
 };
 
@@ -50,6 +50,11 @@ const jsonLd = {
   isPartOf: { '@id': 'https://novative.dev/#website' },
 };
 
+const breadcrumbData = breadcrumbJsonLd([
+  { name: 'Home', path: '/' },
+  { name: 'Blog', path: '/blog' },
+]);
+
 export default function BlogLayout({
   children,
 }: {
@@ -61,6 +66,12 @@ export default function BlogLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
         }}
       />
       {children}
