@@ -9,6 +9,7 @@ import { MarketingHero } from '@/components/marketing/marketing-hero';
 import { MarketingCta } from '@/components/marketing/marketing-cta';
 import { FaqSection, type FaqEntry } from '@/components/marketing/faq-section';
 import { RelatedWork, RelatedReading } from '@/components/marketing/internal-links';
+import { LeadMagnet } from '@/components/lead-magnet';
 import { breadcrumbJsonLd } from '@/lib/seo';
 
 const PATH = '/cost/app-development';
@@ -334,6 +335,8 @@ export default function AppDevelopmentCostPage() {
         />
 
         <RelatedWork slugs={['reelzila', 'novamachine']} className="bg-[var(--background-secondary)]" />
+
+        <LeadMagnet className="bg-[var(--background)]" />
 
         <FaqSection items={faqItems} heading="App Cost FAQ" />
 

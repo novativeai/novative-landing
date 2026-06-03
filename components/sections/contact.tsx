@@ -16,8 +16,8 @@ const contactMethods = [
     icon: Calendar,
     title: 'Discovery Call',
     description: '15 min, free, no pitch',
-    action: 'Book a slot',
-    href: 'mailto:contact@novative.dev?subject=Discovery%20Call%20Request&body=Hi%20Novative%2C%0A%0AI%27d%20like%20to%20book%20a%20discovery%20call.%0A%0AProject%20idea%3A%20',
+    action: 'Pick a time',
+    href: '/book',
   },
   {
     icon: MessageSquare,
