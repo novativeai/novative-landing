@@ -67,7 +67,7 @@ export default function Image() {
 
         {/* Bottom: Project names */}
         <div style={{ display: 'flex', gap: '32px' }}>
-          {['NovaMachine', 'NovaStudio', 'Reelzila', 'Magnet', 'Sonar', 'Heritage Vault'].map(
+          {['Solaris', 'Reelzila', 'NovaMachine', 'Halo', 'Mnemo', 'Magnet'].map(
             (name) => (
               <div
                 key={name}

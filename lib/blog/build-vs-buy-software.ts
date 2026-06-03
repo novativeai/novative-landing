@@ -144,7 +144,7 @@ export const content = `<h2>The SaaS Stack Is Cracking</h2>
 
 <h3>4. Compliance or Security Requirements Exceed What SaaS Offers</h3>
 
-<p>This was the driving force behind <a href="/work/heritage">Heritage Vault</a>, a platform we built for cultural institutions. The requirements: cryptographic verification of artifact authenticity, AI-powered detection capabilities, and full trilingual support. No SaaS platform on the market offered this combination. When your requirements are genuinely unique, custom is the only path.</p>
+<p>This was the driving force behind a digital archive platform we built for cultural institutions. The requirements: cryptographic verification of artifact authenticity, AI-powered detection capabilities, and full trilingual support. No SaaS platform on the market offered this combination. When your requirements are genuinely unique, custom is the only path.</p>
 
 <h3>5. Your Per-Seat Costs Are Growing Faster Than Your Revenue</h3>
 

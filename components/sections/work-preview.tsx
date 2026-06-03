@@ -1,12 +1,22 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowRight, Bot, Clapperboard, Landmark, Magnet, Palette, Radar } from 'lucide-react';
+import { ArrowRight, Bot, Clapperboard, Magnet, Orbit, Palette, Radar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
 
 const projects = [
+  {
+    icon: Orbit,
+    name: 'Solaris',
+    slug: 'solaris',
+    category: 'AI Business Ops',
+    metric: '9+',
+    metricLabel: 'connected tools',
+    description: 'An AI agent that runs your entire business stack — reading your CRM, billing, inbox, and calendar, then acting across all of them.',
+    image: '/portfolio/solaris-4.png',
+  },
   {
     icon: Bot,
     name: 'NovaMachine',
@@ -56,16 +66,6 @@ const projects = [
     metricLabel: 'signal sources',
     description: 'Buying signal radar that detects companies ready to buy before competitors do.',
     image: '/portfolio/PF-Sonar.png',
-  },
-  {
-    icon: Landmark,
-    name: 'Heritage Vault',
-    slug: 'heritage',
-    category: 'Digital Archive',
-    metric: '5',
-    metricLabel: 'verification stages',
-    description: 'AI-powered authenticity verification for cultural preservation.',
-    image: '/portfolio/PF-Heritage.png',
   },
 ];
 

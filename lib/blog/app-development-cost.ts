@@ -66,7 +66,7 @@ export const content = `<h2>The Short Answer Nobody Wants to Give You</h2>
 
 <h2>Real Projects, Real Budgets</h2>
 
-<p>Vague examples are worthless. Here are four actual products we&apos;ve built, what they involved, and where they fall on the cost spectrum.</p>
+<p>Vague examples are worthless. Here are three actual products we&apos;ve built, what they involved, and where they fall on the cost spectrum.</p>
 
 <h3>Reelzila &mdash; AI Video Platform</h3>
 
@@ -93,14 +93,6 @@ export const content = `<h2>The Short Answer Nobody Wants to Give You</h2>
 <p><strong>Complexity:</strong> Medium-high. The scraping infrastructure needs to handle rate limiting, data normalization from disparate sources, and AI-driven classification. But the user-facing interface is relatively straightforward &mdash; dashboards and filters.</p>
 
 <p><strong>Cost tier:</strong> Full-Featured Product range. This is a great example of a project where the backend complexity far exceeds the frontend, which shifts the budget allocation heavily toward architecture and data engineering.</p>
-
-<h3>Heritage Vault &mdash; Digital Archive with Cryptographic Verification</h3>
-
-<p><strong>What it is:</strong> A trilingual digital archive system with cryptographic verification for document authenticity.</p>
-
-<p><strong>Complexity:</strong> Medium. The trilingual support and cryptographic verification add specialized requirements, but the core functionality &mdash; upload, organize, search, verify &mdash; follows well-established patterns.</p>
-
-<p><strong>Cost tier:</strong> Full-Featured Product range. The cryptographic layer and internationalization added roughly 25-30% to what would otherwise be a standard content management build.</p>
 
 <h2>What You&apos;re Actually Paying For</h2>
 

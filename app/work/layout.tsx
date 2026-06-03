@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+import { breadcrumbJsonLd } from '@/lib/seo';
+import { caseStudies } from '@/lib/case-studies';
 
 export const metadata: Metadata = {
   title: 'Our Work — 22+ AI Products Shipped to Production',
@@ -46,84 +48,27 @@ const jsonLd = {
   isPartOf: { '@id': 'https://novative.dev/#website' },
   mainEntity: {
     '@type': 'ItemList',
-    numberOfItems: 6,
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        item: {
-          '@type': 'SoftwareApplication',
-          name: 'NovaMachine',
-          description:
-            'Node-based AI video and image generation platform with 7 node types, multi-model support via fal.ai, and Stripe-powered credit billing.',
-          applicationCategory: 'Multimedia',
-          operatingSystem: 'Web',
-        },
+    numberOfItems: caseStudies.length,
+    itemListElement: caseStudies.map((study, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'SoftwareApplication',
+        name: study.name,
+        description: study.tagline,
+        applicationCategory: study.category,
+        operatingSystem: 'Web',
+        url: `https://novative.dev/work/${study.id}`,
+        ...(study.url ? { sameAs: `https://${study.url}` } : {}),
       },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        item: {
-          '@type': 'SoftwareApplication',
-          name: 'NovaStudio',
-          description:
-            'Professional web-based video editor with frame-accurate timeline, multi-track compositing, AI generation via Kling 2.5, and backend FFmpeg rendering.',
-          applicationCategory: 'Multimedia',
-          operatingSystem: 'Web',
-        },
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        item: {
-          '@type': 'SoftwareApplication',
-          name: 'Reelzila',
-          description:
-            'AI video platform with 6 generation models and a creator marketplace. 40-70% profit margins.',
-          applicationCategory: 'Multimedia',
-          operatingSystem: 'Web',
-          url: 'https://reelzila.studio',
-        },
-      },
-      {
-        '@type': 'ListItem',
-        position: 4,
-        item: {
-          '@type': 'SoftwareApplication',
-          name: 'Magnet',
-          description:
-            'Autonomous lead generation engine that scrapes 9+ sources, classifies signals, and generates personalized outreach via Claude AI.',
-          applicationCategory: 'BusinessApplication',
-          operatingSystem: 'macOS',
-        },
-      },
-      {
-        '@type': 'ListItem',
-        position: 5,
-        item: {
-          '@type': 'SoftwareApplication',
-          name: 'Sonar',
-          description:
-            'B2B buying signal radar with 5-stage intelligence pipeline detecting companies ready to purchase.',
-          applicationCategory: 'BusinessApplication',
-          operatingSystem: 'Web',
-        },
-      },
-      {
-        '@type': 'ListItem',
-        position: 6,
-        item: {
-          '@type': 'SoftwareApplication',
-          name: 'Heritage Vault',
-          description:
-            'AI-powered digital archive with cryptographic authenticity verification for cultural preservation.',
-          applicationCategory: 'EducationalApplication',
-          operatingSystem: 'Web',
-        },
-      },
-    ],
+    })),
   },
 };
+
+const breadcrumbData = breadcrumbJsonLd([
+  { name: 'Home', path: '/' },
+  { name: 'Work', path: '/work' },
+]);
 
 export default function WorkLayout({
   children,
@@ -136,6 +81,12 @@ export default function WorkLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(jsonLd).replace(/</g, '\u003c'),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbData).replace(/</g, '\\u003c'),
         }}
       />
       {children}

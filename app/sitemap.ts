@@ -1,10 +1,24 @@
 import type { MetadataRoute } from 'next';
 import { blogPosts, getAllBlogSlugs } from '@/lib/blog';
 import { caseStudies, getAllSlugs } from '@/lib/case-studies';
+import { serviceNavItems } from '@/lib/services';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://novative.dev';
   const now = new Date();
+
+  // High-intent SEO landing pages (services, cost, founder).
+  const landingPaths = [
+    '/for/non-technical-founders',
+    '/cost/app-development',
+    ...serviceNavItems.map((s) => s.href),
+  ];
+  const landingUrls: MetadataRoute.Sitemap = landingPaths.map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.9,
+  }));
 
   const caseStudyUrls: MetadataRoute.Sitemap = getAllSlugs().map((slug) => {
     const study = caseStudies.find((s) => s.id === slug);
@@ -47,6 +61,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.9,
     },
+    // High-intent SEO landing pages
+    ...landingUrls,
     // Individual case studies
     ...caseStudyUrls,
     // Blog listing page

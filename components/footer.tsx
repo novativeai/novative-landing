@@ -4,16 +4,17 @@ import Link from 'next/link';
 
 const footerLinks = {
   services: [
-    { name: 'AI Products', href: '#services' },
-    { name: 'SaaS Platforms', href: '#services' },
-    { name: 'Mobile Apps', href: '#services' },
-    { name: 'Business Automation', href: '#services' },
+    { name: 'MVP Development', href: '/services/mvp-development' },
+    { name: 'AI Chatbot', href: '/services/ai-chatbot' },
+    { name: 'SaaS Development', href: '/services/saas-development' },
+    { name: 'Business Automation', href: '/services/business-automation' },
   ],
   company: [
+    { name: 'For Founders', href: '/for/non-technical-founders' },
     { name: 'Our Work', href: '/work' },
-    { name: 'Expertise', href: '#expertise' },
-    { name: 'Pricing', href: '#pricing' },
-    { name: 'Estimate', href: '#estimate' },
+    { name: 'App Costs', href: '/cost/app-development' },
+    { name: 'Pricing', href: '/#pricing' },
+    { name: 'Estimate', href: '/#estimate' },
   ],
   legal: [
     { name: 'Legal Notice', href: '/legal' },
