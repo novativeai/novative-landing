@@ -4,6 +4,8 @@ import { content as customAiContent } from './blog/custom-ai-tools';
 import { content as chatbotSmallBusinessContent } from './blog/ai-chatbot-small-business';
 import { content as realTimeAutomationContent } from './blog/real-time-automation';
 import { content as saasLaunchContent } from './blog/saas-launch-playbook';
+import { content as saasVideoContent } from './blog/saas-marketing-video-differentiation';
+import { content as vibeCodingContent } from './blog/vibe-coding-for-founders';
 import { content as whatIsAnMvpContent } from './blog/what-is-an-mvp';
 
 export interface BlogPost {
@@ -24,6 +26,99 @@ export interface BlogPost {
 }
 
 export const blogPosts: BlogPost[] = [
+  {
+    slug: 'vibe-coding-for-founders',
+    title: 'Vibe Coding for Founders: The Good, the Bad, and the Ugly',
+    description:
+      'What vibe coding really is, where it wins for founders, where it quietly piles up debt, and the genuine disasters — 45% of AI code shipping insecure, a deleted production database, the 19%-slower reality. An honest 2026 guide from a studio that ships.',
+    publishedAt: '2026-06-04',
+    author: 'Novative',
+    category: 'AI & Automation',
+    tags: [
+      'vibe coding',
+      'vibe coding for founders',
+      'AI code generation',
+      'vibe coding security',
+      'AI coding tools',
+      'non-technical founder',
+      'technical debt',
+      'MVP development',
+    ],
+    readingTime: '11 min read',
+    content: vibeCodingContent,
+    relatedCaseStudies: ['solaris', 'reelzila', 'magnet'],
+    relatedService: {
+      name: 'See how we work with non-technical founders',
+      href: '/for/non-technical-founders',
+    },
+    faqItems: [
+      {
+        question: 'What is vibe coding?',
+        answer:
+          'Vibe coding is a term coined by Andrej Karpathy in February 2025 for building software by describing what you want in plain English to an AI model, running the generated code, and pasting errors back for the model to fix — often accepting the code without fully reading it. Collins Dictionary named it the 2025 Word of the Year. Tools like Cursor, Lovable, Bolt, v0, and Replit popularized the approach.',
+      },
+      {
+        question: 'Is vibe coding safe for production apps?',
+        answer:
+          'Not by default. Independent 2025 research found roughly 45% of AI-generated code introduced a security vulnerability, Carnegie Mellon found only about 10.5% of AI code passed a security review, and AI-assisted commits leak secrets at over twice the human rate. Vibe coding is great for prototypes and internal tools, but anything with real users, payments, authentication, or personal data needs human engineering review before it goes live.',
+      },
+      {
+        question: 'Is vibe coding good for non-technical founders?',
+        answer:
+          'Yes — for validation. It lets a non-technical founder build a clickable prototype and test an idea cheaply and fast, which is genuinely powerful. The trap is mistaking that prototype for a finished product. The hard, expensive parts of software — architecture, security, scaling, debugging — still require engineering judgment, so the durable path is to vibe-code to validate, then bring in real engineering to build the production version.',
+      },
+      {
+        question: 'Does AI coding actually make you faster?',
+        answer:
+          'For throwaway prototypes, dramatically. For real, complex production work, less than it feels. A 2025 randomized controlled trial by METR found experienced developers were 19% slower with AI on familiar codebases — even though they believed it had sped them up by about 20%. The speed is real where stakes are low and illusory where they are high.',
+      },
+    ],
+  },
+  {
+    slug: 'saas-marketing-video-differentiation',
+    title: 'Why a Great SaaS Marketing Video Is Your Sharpest Differentiator in a Crowded Market',
+    description:
+      "With 15,000+ martech tools and 30,000+ SaaS companies, features stopped differentiating — clarity and trust win. The data on why a top-quality demo video out-converts everything, and how to make one that sells.",
+    publishedAt: '2026-06-04',
+    author: 'Novative',
+    category: 'SaaS Strategy',
+    tags: [
+      'SaaS marketing video',
+      'SaaS demo video',
+      'product video',
+      'SaaS differentiation',
+      'video marketing',
+      'explainer video',
+      'SaaS launch video',
+      'conversion rate optimization',
+    ],
+    readingTime: '10 min read',
+    content: saasVideoContent,
+    relatedCaseStudies: ['reelzila', 'novastudio', 'novamachine'],
+    relatedService: { name: 'Explore SaaS development', href: '/services/saas-development' },
+    faqItems: [
+      {
+        question: 'Does a marketing video really increase SaaS conversions?',
+        answer:
+          "Consistently, yes. Wyzowl's research finds around 8 in 10 people have been convinced to buy after watching a video and 80% have downloaded or bought an app after a demo video. Landing pages with video commonly see conversion lifts of roughly 80-86% over text-only, and B2B buyers are about 73% more likely to purchase after watching a product video.",
+      },
+      {
+        question: 'How long should a SaaS demo video be?',
+        answer:
+          'Match the length to the job. A hero video on your landing page or an ad should be short and punchy — roughly 60-90 seconds for a hero film and 15-30 seconds for an ad cut. A deeper product walkthrough for already-interested buyers can run several minutes. The common mistake is using one long video for every placement.',
+      },
+      {
+        question: 'How much does a SaaS marketing video cost?',
+        answer:
+          'It ranges widely by production tier. AI tools have lowered the floor dramatically for simple screen-capture explainers, while a polished, scripted hero video with custom motion design and sound is a more significant investment. The right question is not just cost but fit: in a crowded market, a forgettable cheap video is money spent for little return, while a high-quality one doubles as a trust signal for your whole product.',
+      },
+      {
+        question: 'What video does a SaaS need first?',
+        answer:
+          'The hero explainer for your landing page. It does the heaviest lifting on comprehension and conversion, and it can be re-cut into shorter ads, a launch video, and onboarding clips. Start there, prove it converts, then expand into the rest of the funnel.',
+      },
+    ],
+  },
   {
     slug: 'how-much-does-it-cost-to-build-an-app',
     title: 'How Much Does It Cost to Build an App in 2026? Real Numbers From a Studio That Has Built 22+',
